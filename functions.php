@@ -20,6 +20,8 @@ if ( ! class_exists( 'Timber' ) ) {
 	return;
 }
 
+include_once('gutenberg/index.php');
+
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
@@ -44,6 +46,7 @@ class StarterSite extends Timber\Site {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action('wp_enqueue_scripts', array( $this, 'registerStylesAndScripts' ));
 		parent::__construct();
 	}
 	/** This is where you can register custom post types. */
@@ -137,6 +140,20 @@ class StarterSite extends Timber\Site {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		return $twig;
+	}
+
+	public function registerStylesAndScripts()
+	{
+	    wp_register_style('main-css', get_template_directory_uri() . '/src/css/style.css');
+	    wp_enqueue_style('main-css');
+	    wp_register_script('new-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+	    wp_enqueue_script('new-jquery');
+	    wp_register_script('main-js', get_template_directory_uri() . '/src/js/kinder-painting.min.js');
+	    wp_enqueue_script('main-js', get_template_directory_uri() . '/src/js/kinder-painting.min.js', [], false, true);
+	    wp_register_style('owl', get_template_directory_uri() . '/dist/css/external/owl.carousel.min.css');
+	    wp_enqueue_style('owl');
+	    wp_register_script('owl', get_template_directory_uri() . '/dist/js/external/owl.carousel.min.js');
+	    wp_enqueue_script('owl');
 	}
 
 }

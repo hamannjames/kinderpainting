@@ -7,22 +7,61 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-		<header class="header" >
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDN7MNF"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=615882105216663&autoLogAppEvents=1"></script>
+		<header class="header_wrapper" id="site_header">
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</nav><!-- #nav -->
+				<div class="header_container">
+					<div class="header_row">
+						<h1 class="hdr-logo header_logo" role="banner">
+							<a class="hdr-logo-link" href="{{site.url}}" rel="home">Kinder Painting</a>
+						</h1>
+						<button class="header_contact_toggle" id="site_contact_toggle">
+							<i class="fas fa-phone"></i>
+						</button>
+						<!--
+						<button id="site_nav_toggle" class="header_nav_toggle">
+						    <span></span>
+						    <span></span>
+						    <span></span>
+						</button>
+					-->
+						<section class="header_contact" id="site_contact">
+							<button id="site_contact_close" class="header_contact_close">Close</button>
+							<p>
+								<span class="header_contact_telephone">Work: <a href="tel:3604236633">(360) 423-6633</a></span>
+							</p>
+							<p>
+								<span class="header_contact_telephone">Cell: <a href="tel:3604304604">(360) 430-4604</a></span>
+							</p>
+							<p>
+								<span class="header_contact_email">Email: <a href="mailto:kinderpainting@gmail.com">kinderpainting@gmail.com</a></span>
+							</p>
+						</section>
+						
+						<nav id="site_nav" class="header_nav" role="navigation">
+							<button id="site_drawer_close" class="header_nav_close">Close</button>
+							<section class="header_contact" id="site_contact_mobile">
+								<p>
+									<span class="header_contact_telephone">Work: <a href="tel:3604236633">(360) 423-6633</a></span>
+								</p>
+								<p>
+									<span class="header_contact_telephone">Cell: <a href="tel:3604304604">(360) 430-4604</a></span>
+								</p>
+							</section>
+							<!--{% include "menu.twig" with {'menu': menu.get_items} %}-->
+						</nav>
+					</div>
 				</div>
 			{% endblock %}
 		</header>
 
 		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
+			{% if title %}<h2>{{title}}</h2>{% endif %}
 			<div class="wrapper {{sidebar_class}}">
 				{% block content %}
 					Sorry, no content

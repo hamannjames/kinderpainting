@@ -1,3 +1,10 @@
-body {
-    color: blue;
-}
+@import 'normalize';
+@import 'mixins';
+@import 'typography';
+@import 'site';
+@import 'header';
+@import 'slider';
+@import 'layout';
+@import 'testimonials';
+@import 'footer';
+@import 'layout-override';

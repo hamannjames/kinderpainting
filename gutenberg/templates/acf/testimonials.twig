@@ -1,0 +1,12 @@
+<section class="testimonials_wrapper">
+    <div class="testimonials_container">
+        {% for quote in fields.testimonials %}
+            <div class="testimonials_content">
+                <i class="fas fa-quote-left"></i>
+                <p>
+                    <span class="testimonials_quote">{{quote.quote}}</span> — {{quote.author}}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</section>

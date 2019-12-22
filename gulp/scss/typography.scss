@@ -1,0 +1,16 @@
+h1, h2, h3, h4, h5, h6 {
+
+    &.is-style-primary {
+        @include fluid-type(400px, 991px, 24px, 35px);  
+        color: $primary;
+    }
+}
+
+p, ul, ol, input, textarea, select {
+    @include fluid-type(400px, 991px, 16px, 18px);
+}
+
+.page_title {
+    @include fliud-type(400px, 991px, 22px 30px);
+    color: $primary;
+}

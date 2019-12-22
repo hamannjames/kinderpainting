@@ -1,0 +1,71 @@
+.slider {
+
+
+    &_container {
+        border: 5px solid $tertiary;
+        border-radius: 2px;
+        box-shadow: 0 12px 18px -6px #666;
+        margin-bottom: 65px;
+
+        .owl-dots {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: calc(100% + 15px);
+            text-align: center;
+        }
+
+        .owl-dot {
+            font-size: 18px;
+            margin: 0 1rem;
+
+            &.active {
+                &:after {
+                    color: $secondary;
+                }
+            }
+
+            &:hover {
+                &:after {
+                    color: $secondary;
+                }
+            }
+
+            &:after {
+                font-size: 35px;
+                color: $tertiary;
+                content: '\2022';
+                transition: color ease .3s;
+                font-family: 'Arial', sans-serif;
+            }
+        }
+    }
+
+    &_content {
+        height: 0;
+        padding-bottom: 75%;
+        background-size: cover;
+        background-position: center center;
+
+        @include mq(tablet-wide, min) {
+            padding-bottom: 60%;
+        }
+
+        &_caption {
+            position: absolute;
+            background-color: rgba(0,0,0,0.5);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewbox="100 100 100 100"> <circle r="1" fill="#333" style="opacity: .7" /></svg>');
+            background-size: 3px 3px;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            padding: 2rem;
+        }
+    }
+}
+
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: flex !important;
+}

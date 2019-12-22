@@ -1,0 +1,16 @@
+.testimonials {
+
+    &_content {
+        display: flex;
+
+        .fa-quote-left {
+            font-size: 3rem;
+            color: $secondary;
+            margin-right: 2rem;
+        }
+
+        & + .testimonials_content {
+            margin-top: 2.5rem;
+        }
+    }
+}

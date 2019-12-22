@@ -1,0 +1,20 @@
+<section class="slider_wrapper">
+    <div class="slider_container owl-carousel" id="slider--{{block.id}}">
+
+        {% for slide in fields.slides %}
+            <div class="slider_content" style="background-image: url('{{slide.image}}')">
+                <div class="slider_content_caption">{{slide.caption}}</div>
+            </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<script>
+    $('#slider--{{block.id}}').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        smartSpeed: 750
+    });
+</script>

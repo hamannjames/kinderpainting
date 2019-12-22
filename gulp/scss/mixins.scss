@@ -1,0 +1,97 @@
+$primary: #af3e3e;
+$primaryrgba: rgba(175, 62, 62, .9);
+$secondary: #ffafaf;
+$tertiary: #d97171;
+
+$breakpoints: (
+  "minimum":      0px,
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "tablet-wide":  991px,
+  "uwkc-max": 1200px,
+  "desktop":      1200px,
+  "desktop-wide": 1440px
+);
+
+//fluid type mixin
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// breakpoint media query mixin
+
+@mixin mq($width, $type: 'max') {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type == 'min' {
+      $width: $width + 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin funkyLink ($color, $direction: 'middle') {
+  position: relative;
+  padding-bottom: 2px;
+
+  &:after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+    visibility: hidden;
+    @include vendor-prefix(transition, (all ease .3s));
+    @include vendor-prefix(transform, (scaleX(0)));
+
+    @if $direction == 'left' {
+      transform-origin: left;
+    }
+
+    @if $direction == 'right' {
+      transform-origin: right;
+    }
+  }
+
+  &:hover {
+    &:after {
+      visibility: visible;
+      @include vendor-prefix(transform, (scaleX(1)));
+    }
+  }
+}
+
+@mixin vendor-prefix($name, $value) {
+  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    #{$vendor}#{$name}: #{$value};
+  }
+}
