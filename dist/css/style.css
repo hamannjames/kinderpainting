@@ -323,6 +323,19 @@ p, ul, ol, input, textarea, select {
     p, ul, ol, input, textarea, select {
       font-size: 18px; } }
 
+.page_title {
+  color: #af3e3e;
+  padding-bottom: 3rem;
+  padding-top: 3rem; }
+  .page_title {
+    font-size: 22px; }
+    @media screen and (min-width: 400px) {
+      .page_title {
+        font-size: calc(22px + 8 * ((100vw - 400px) / 591)); } }
+    @media screen and (min-width: 991px) {
+      .page_title {
+        font-size: 30px; } }
+
 * {
   box-sizing: border-box; }
 
@@ -457,8 +470,7 @@ body.mobile .header_wrapper {
     border-radius: 5px;
     padding: .5em;
     background-color: #d97171;
-    margin-left: auto;
-    margin-right: 2rem; }
+    margin-left: auto; }
     @media only screen and (min-width: 641px) {
       .header_contact_toggle {
         display: none; } }
@@ -698,6 +710,8 @@ body.mobile .header_wrapper {
   padding-left: 2rem;
   padding-right: 2rem;
   margin: 0 auto; }
+  .section_container p {
+    margin-top: 3rem; }
 
 .section_row {
   display: flex;
@@ -747,3 +761,6 @@ body.mobile .header_wrapper {
 
 html {
   margin-top: 0 !important; }
+
+.content-wrapper {
+  padding-bottom: 3rem; }

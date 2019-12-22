@@ -1,6 +1,6 @@
 {% if menu %}
 	<ul id="site_menu" class="header_menu_container">
-	{% for item in menu %}
+	{% for item in menu.items %}
 		<li class="{{ item.classes | join(' ') }}">
 			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 		</li>

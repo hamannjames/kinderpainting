@@ -17,6 +17,10 @@ const navToggle = document.getElementById('site_nav_toggle');
 const headerNav = document.getElementById('site_nav');
 const contactClose = document.getElementById('site_drawer_close');
 
+navToggle.addEventListener('click', function(){
+    headerNav.classList.add('open');
+});
+
 contactToggle.addEventListener('click', function(){
     headerNav.classList.add('open');
 });

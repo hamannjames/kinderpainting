@@ -50,7 +50,6 @@ body.mobile {
             padding: .5em;
             background-color: $tertiary;
             margin-left: auto;
-            margin-right: 2rem;
 
             @include mq(phone-small, min) {
                 font-size: 1.6rem;

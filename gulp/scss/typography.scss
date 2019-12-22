@@ -11,6 +11,8 @@ p, ul, ol, input, textarea, select {
 }
 
 .page_title {
-    @include fliud-type(400px, 991px, 22px 30px);
+    @include fluid-type(400px, 991px, 22px, 30px);
     color: $primary;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
 }
